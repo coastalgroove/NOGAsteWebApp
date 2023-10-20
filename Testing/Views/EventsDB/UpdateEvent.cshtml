@@ -1,0 +1,74 @@
+﻿@*This line "binds" the UpdateEvent.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model NOGAsteWebApp.Models.EventsDBModel
+
+<h2>Update @Model.ThreatEval</h2>
+
+@using (Html.BeginForm("UpdateEventToDatabase", "EventsDB", "Post"))
+{
+    <input asp-for="KeyID" type="hidden" value="@Model.KeyID" />
+
+    @*--------------------------------*@
+    <label asp-for="ThreatEval" class="control-label">ThreatEval</label>
+    <select asp-for="ThreatEval" class="form-control" id="level">
+        <option value="TBD">TBD</option>
+        <option value="INFO">INFO</option>
+        <option value="LOW">LOW</option>
+        <option value="MED">MED</option>
+        <option value="HIGH">HIGH</option>
+    </select>
+
+
+
+    @*--------------------------------*@
+    <label asp-for="ActionReqd" class="control-label">ActionReqd</label>
+    <select asp-for="ActionReqd" class="form-control" id="response">
+        <option value="TBD">TBD</option>
+        <option value="Discuss With User">Discuss With User</option>
+        <option value="Disable Account Open Incident Case">Disable Account Open Incident</option>
+        <option value="Incident Closed">Incident Closed</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <input type="text" name="ActionReqdOther" class="form-control" id="otherResponse" style="display: none;" placeholder="Specify Other Response" />
+
+    @*--------------------------------*@
+
+
+
+
+    @*--------------------------------*@
+    <input type="submit" value="Update Event" class="btn btn-primary" />
+    @*--------------------------------*@
+
+
+
+
+}
+
+
+
+<script>
+    var responseDropdown = document.getElementById("response");
+    var otherResponseInput = document.getElementById("otherResponse");
+
+    responseDropdown.addEventListener("change", function () {
+        if (this.value === "Other") {
+            otherResponseInput.style.display = "block";
+        } else {
+            otherResponseInput.style.display = "none";
+        }
+    });
+
+    otherResponseInput.addEventListener("input", function () {
+        responseDropdown.value = "Other";
+    });
+</script>
+
+
+

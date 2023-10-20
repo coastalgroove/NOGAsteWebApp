@@ -1,0 +1,39 @@
+﻿@*This line "binds" the RiskyAccess.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+<h3> NOGAste: Suspicous Access Logon Type 3=Network, 4=Batch, 8=ClearText, 9=PrivEsc/RunAS, 10=RemoteInteractive </h3>
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>UserID</th>
+        <th>MachineName</th>
+        <th>LogonType</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+    </tr>
+    @foreach (var riskyAccessEvents in Model)
+    {
+
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@riskyAccessEvents.KeyID>@riskyAccessEvents.KeyID</a></td>
+            <td>@riskyAccessEvents.KeyID</td>
+            <td>@riskyAccessEvents.EventID</td>
+            <td>@riskyAccessEvents.TimeCreated</td>
+            <td>@riskyAccessEvents.UserID</td>
+            <td>@riskyAccessEvents.MachineName</td>
+            <td>@riskyAccessEvents.LogonType</td>
+            <td>@riskyAccessEvents.ThreatEval</td>
+            <td>@riskyAccessEvents.ActionReqd</td>
+        </tr>
+    }
+</table>

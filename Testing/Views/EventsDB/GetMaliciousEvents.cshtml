@@ -1,0 +1,52 @@
+﻿@*This line "binds" the GetMaliciousEvents.cshtml view to the 
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+<h3> NOGAste: Malicious Program Use </h3>
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>UserID</th>
+        <th>MachineName</th>
+        <th>CommandRun</th>
+        <th>ProcessInfo</th>
+        <th>ObjName</th>
+        <th>AppPath</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+    </tr>
+@foreach(var malEvent in Model)
+{
+
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@malEvent.KeyID>@malEvent.KeyID</a></td>
+            <td>@malEvent.KeyID</td>
+            <td>@malEvent.EventID</td>
+            <td>@malEvent.TimeCreated</td>
+            <td>@malEvent.UserID</td>
+            <td>@malEvent.MachineName</td>
+            <td>@malEvent.CommandRun</td>
+            <td>@malEvent.ProcessInfo</td>
+            <td>@malEvent.ObjName</td>
+            <td>@malEvent.AppPath</td>
+            <td>@malEvent.ThreatEval</td>
+            <td>@malEvent.ActionReqd</td>
+        </tr>
+}
+</table>
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+﻿@*This line "binds" the ViewEvent.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model NOGAsteWebApp.Models.EventsDBModel
+
+<h3>@Model.KeyID Information</h3>
+
+<table class="table">
+    
+        <tr>
+            <th>KeyID</th>
+            <th>EventID</th>
+            <th>TimeCreated</th>
+            <th>UserID</th>
+            <th>MachineName</th>
+            <th>ThreatEval</th>
+            <th>ActionReqd</th>
+
+        </tr>
+        <tr>
+            <td>@Model.KeyID</td>
+            <td>@Model.EventID</td>
+            <td>@Model.TimeCreated</td>
+            <td>@Model.UserID</td>
+            <td>@Model.MachineName</td>
+            <td>@Model.ThreatEval</td>
+            <td>@Model.ActionReqd</td>
+        </tr>
+</table>
+
+                     @* Action         Controller       feeding parameters *@
+@using(Html.BeginForm("DeleteEvent", "EventsDB", new { id = Model.KeyID }, FormMethod.Post))
+{
+    <button class="btn btn-danger" type="submit">Delete</button>
+}
+
+<div style="display: block">
+    <a href="/EventsDB/UpdateEvent/@Model.KeyID">Update this Event</a>
+</div>

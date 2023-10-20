@@ -1,0 +1,24 @@
+﻿@*This line "binds" the UserIDList.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+<h3> NOGAste: List Of All Users </h3>
+<table class="table">
+    <tr>
+        <th>UserID</th>
+    </tr>
+    @foreach (var userIDListEvents in Model)
+    {
+
+        <tr>
+
+            <td>@userIDListEvents.UserID</td>
+        </tr>
+    }
+</table>

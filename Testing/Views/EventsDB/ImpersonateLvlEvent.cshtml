@@ -1,0 +1,39 @@
+﻿@*This line "binds" the ImpersonateLvlEvent.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+<h3> NOGAste: Impersonation Level: "Delegate" [DANGEROUS], "Anonymous","Identity","Impersonate" [Normal]</h3>
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>UserID</th>
+        <th>ImpersonateLvl</th>
+        <th>MachineName</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+    </tr>
+    @foreach (var dangerousImpersonationLvl in Model)
+    {
+
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@dangerousImpersonationLvl.KeyID>@dangerousImpersonationLvl.KeyID</a></td>
+            <td>@dangerousImpersonationLvl.KeyID</td>
+            <td>@dangerousImpersonationLvl.EventID</td>
+            <td>@dangerousImpersonationLvl.TimeCreated</td>
+            <td>@dangerousImpersonationLvl.UserID</td>
+            <td>@dangerousImpersonationLvl.ImpersonateLvl</td>
+            <td>@dangerousImpersonationLvl.MachineName</td>
+            <td>@dangerousImpersonationLvl.ThreatEval</td>
+            <td>@dangerousImpersonationLvl.ActionReqd</td>
+        </tr>
+    }
+</table>

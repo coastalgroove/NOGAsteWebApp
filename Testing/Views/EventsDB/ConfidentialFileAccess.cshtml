@@ -1,0 +1,49 @@
+﻿@*This line "binds" the ConfidentialFileAccess.cshtml view to the 
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+
+<h3> NOGAste: Confidential and Prohibited File/Program Access </h3>
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>UserID</th>
+        <th>MachineName</th>
+        <th>CommandRun</th>
+        <th>ProcessInfo</th>
+        <th>ObjName</th>
+        <th>AppPath</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+    </tr>
+    @foreach (var ConfidentialEvents in Model)
+    {
+
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@ConfidentialEvents.KeyID>@ConfidentialEvents.KeyID</a></td>
+            <td>@ConfidentialEvents.KeyID</td>
+            <td>@ConfidentialEvents.EventID</td>
+            <td>@ConfidentialEvents.TimeCreated</td>
+            <td>@ConfidentialEvents.UserID</td>
+            <td>@ConfidentialEvents.MachineName</td>
+            <td>@ConfidentialEvents.CommandRun</td>
+            <td>@ConfidentialEvents.ProcessInfo</td>
+            <td>@ConfidentialEvents.ObjName</td>
+            <td>@ConfidentialEvents.AppPath</td>
+            <td>@ConfidentialEvents.ThreatEval</td>
+            <td>@ConfidentialEvents.ActionReqd</td>
+        </tr>
+    }
+</table>
+
+
+

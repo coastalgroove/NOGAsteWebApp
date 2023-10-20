@@ -1,0 +1,37 @@
+﻿@*This line "binds" the HighRiskThreats.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+<h3> NOGAste: Events Flagged as HIGH Findings </h3>
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>UserID</th>
+        <th>MachineName</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+    </tr>
+    @foreach (var highRiskThreats in Model)
+    {
+
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@highRiskThreats.KeyID>@highRiskThreats.KeyID</a></td>
+            <td>@highRiskThreats.KeyID</td>
+            <td>@highRiskThreats.EventID</td>
+            <td>@highRiskThreats.TimeCreated</td>
+            <td>@highRiskThreats.UserID</td>
+            <td>@highRiskThreats.MachineName</td>
+            <td>@highRiskThreats.ThreatEval</td>
+            <td>@highRiskThreats.ActionReqd</td>
+        </tr>
+    }
+</table>

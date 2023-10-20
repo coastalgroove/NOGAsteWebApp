@@ -1,0 +1,73 @@
+﻿@*This line "binds" the Index.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+
+
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+<h2>NOGAste: View All Events</h2>
+
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>EventMsg</th>
+        <th>LogonType</th>
+        <th>ElevToken</th>
+        <th>ImpersonateLvl</th>
+        <th>LogonFail</th>
+        <th>KnownUser</th>
+        <th>FailReason</th>
+        <th>MachineName</th>
+        <th>UserID</th>
+        <th>ProgramRun</th>
+        <th>CommandRun</th>
+        <th>ProcessInfo</th>
+        <th>ObjName</th>
+        <th>AppPath</th>
+        <th>LogLvl</th>
+        <th>Status</th>
+        <th>SubStatus</th>
+        <th>ReasonEvnt</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+
+    </tr>
+
+    @foreach (var eventsDB in @Model)
+    {
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@eventsDB.KeyID>@eventsDB.KeyID</a></td>
+            <td>@eventsDB.KeyID</td>
+            <td>@eventsDB.EventID</td>
+            <td>@eventsDB.TimeCreated</td>
+            <td>@eventsDB.EventMsg</td>
+            <td>@eventsDB.LogonType</td>
+            <td>@eventsDB.ElevToken</td>
+            <td>@eventsDB.ImpersonateLvl</td>
+            <td>@eventsDB.LogonFail</td>
+            <td>@eventsDB.KnownUser</td>
+            <td>@eventsDB.FailReason</td>
+            <td>@eventsDB.MachineName</td>
+            <td>@eventsDB.UserID</td>
+            <td>@eventsDB.ProgramRun</td>
+            <td>@eventsDB.CommandRun</td>
+            <td>@eventsDB.ProcessInfo</td>
+            <td>@eventsDB.ObjName</td>
+            <td>@eventsDB.AppPath</td>
+            <td>@eventsDB.LogLvl</td>
+            <td>@eventsDB.Status</td>
+            <td>@eventsDB.SubStatus</td>
+            <td>@eventsDB.ReasonEvnt</td>
+            <td>@eventsDB.ThreatEval</td>
+            <td>@eventsDB.ActionReqd</td>
+        </tr>
+    }
+
+</table>

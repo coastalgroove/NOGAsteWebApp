@@ -1,0 +1,41 @@
+﻿@*This line "binds" the LogonFail.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+<h3> NOGAste: Logon Failures </h3>
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>UserID</th>
+        <th>MachineName</th>
+        <th>LogonType</th>
+        <th>LogonFail</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+    </tr>
+    @foreach (var logonFailEvents in Model)
+    {
+
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@logonFailEvents.KeyID>@logonFailEvents.KeyID</a></td>
+            <td>@logonFailEvents.KeyID</td>
+            <td>@logonFailEvents.EventID</td>
+            <td>@logonFailEvents.TimeCreated</td>
+            <td>@logonFailEvents.UserID</td>
+            <td>@logonFailEvents.MachineName</td>
+            <td>@logonFailEvents.LogonType</td>
+            <td>@logonFailEvents.LogonFail</td>
+            <td>@logonFailEvents.ThreatEval</td>
+            <td>@logonFailEvents.ActionReqd</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,39 @@
+﻿@*This line "binds" the UnkUserRedAlert.cshtml view to the
+model (EventsDBModel object) using the @model directive
+//              you-are-here
+//Model>            View>          Controller
+//Process sequence
+//User "clicks">   Controller "Select correct model, binds to view">    Model "Data referenced">    View "Display to User">  [Wait for User]
+*@
+@model IEnumerable<NOGAsteWebApp.Models.EventsDBModel>
+
+
+<h3> NOGAste: Unknown User Account Detection </h3>
+<table class="table">
+    <tr>
+        <th>Update</th>
+        <th>KeyID</th>
+        <th>EventID</th>
+        <th>TimeCreated</th>
+        <th>UserID</th>
+        <th>KnownUser</th>
+        <th>MachineName</th>
+        <th>ThreatEval</th>
+        <th>ActionReqd</th>
+    </tr>
+    @foreach (var unkUserRedAlert in Model)
+    {
+
+        <tr>
+            <td><a href=/EventsDB/ViewEvent/@unkUserRedAlert.KeyID>@unkUserRedAlert.KeyID</a></td>
+            <td>@unkUserRedAlert.KeyID</td>
+            <td>@unkUserRedAlert.EventID</td>
+            <td>@unkUserRedAlert.TimeCreated</td>
+            <td>@unkUserRedAlert.UserID</td>
+            <td>@unkUserRedAlert.KnownUser</td>
+            <td>@unkUserRedAlert.MachineName</td>
+            <td>@unkUserRedAlert.ThreatEval</td>
+            <td>@unkUserRedAlert.ActionReqd</td>
+        </tr>
+    }
+</table>
